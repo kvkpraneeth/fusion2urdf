@@ -83,12 +83,6 @@ def run(context):
         # Generate URDF
         Write.write_urdf(joints_dict, links_xyz_dict, inertial_dict, material_dict, package_name, robot_name, save_dir)
         Write.write_materials_xacro(color_dict, robot_name, save_dir)
-        Write.write_transmissions_xacro(joints_dict, links_xyz_dict, robot_name, save_dir)
-        Write.write_gazebo_xacro(joints_dict, links_xyz_dict, inertial_dict, package_name, robot_name, save_dir)
-        Write.write_display_launch(package_name, robot_name, save_dir)
-        Write.write_gazebo_launch(package_name, robot_name, save_dir)
-        Write.write_control_launch(package_name, robot_name, save_dir, joints_dict)
-        Write.write_yaml(package_name, robot_name, save_dir, joints_dict)
         
         # copy over package files
         utils.copy_package(save_dir, package_dir)

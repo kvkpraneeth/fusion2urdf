@@ -67,39 +67,6 @@ class Joint:
 
         self.joint_xml = "\n".join(utils.prettify(joint).split("\n")[1:])
 
-    def make_transmission_xml(self):
-        """
-        Generate the tran_xml and hold it by self.tran_xml
-
-
-        Notes
-        -----------
-        mechanicalTransmission: 1
-        type: transmission interface/SimpleTransmission
-        hardwareInterface: PositionJointInterface
-        """
-
-        tran = Element('transmission')
-        tran.attrib = {'name':self.name + '_tran'}
-
-        joint_type = SubElement(tran, 'type')
-        joint_type.text = 'transmission_interface/SimpleTransmission'
-
-        joint = SubElement(tran, 'joint')
-        joint.attrib = {'name':self.name}
-        hardwareInterface_joint = SubElement(joint, 'hardwareInterface')
-        hardwareInterface_joint.text = 'hardware_interface/EffortJointInterface'
-
-        actuator = SubElement(tran, 'actuator')
-        actuator.attrib = {'name':self.name + '_actr'}
-        hardwareInterface_actr = SubElement(actuator, 'hardwareInterface')
-        hardwareInterface_actr.text = 'hardware_interface/EffortJointInterface'
-        mechanicalReduction = SubElement(actuator, 'mechanicalReduction')
-        mechanicalReduction.text = '1'
-
-        self.tran_xml = "\n".join(utils.prettify(tran).split("\n")[1:])
-
-
 def make_joints_dict(root, msg):
     """
     joints_dict holds parent, axis and xyz informatino of the joints
