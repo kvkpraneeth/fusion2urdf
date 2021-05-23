@@ -167,10 +167,6 @@ def prettify(elem):
 
 def copy_package(save_dir, package_dir):
     try:
-        os.mkdir(save_dir + '/launch')
-    except:
-        pass
-    try:
         os.mkdir(save_dir + '/urdf')
     except:
         pass

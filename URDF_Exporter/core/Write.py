@@ -123,7 +123,6 @@ to swap component1<=>component2"
             axis=joints_dict[j]['axis'], parent=parent, child=child, \
             upper_limit=upper_limit, lower_limit=lower_limit)
             joint.make_joint_xml()
-            joint.make_transmission_xml()
             f.write(joint.joint_xml)
             f.write('\n')
 
